@@ -46,4 +46,37 @@ function playRound(playerSelection, computerSelection) {
 
 console.log('Rock-Paper-Scissors Start!');
 
-function playGame() {}
+function playGame() {
+  const roundsPerGame = 5;
+  for (let index = 1; index <= roundsPerGame; index++) {
+    let playerSelection = prompt(
+      'Choose your sign: (Rock, Paper, or Scissors)'
+    ).toLowerCase();
+    let computerSelection = getComputerChoice();
+
+    if (
+      playerSelection != 'rock' &&
+      playerSelection != 'paper' &&
+      playerSelection != 'scissors'
+    ) {
+      alert('Invalid choice. Please choose Rock, Paper, or Scissors');
+      index--;
+      continue;
+    }
+
+    console.log("You've chosen " + playerSelection);
+    console.log('Computer has chosen ' + computerSelection);
+    console.log(playRound(playerSelection, computerSelection));
+    console.log(
+      'player: ' + playerScore + ' | ' + 'computer: ' + computerScore
+    );
+  }
+
+  if (playerScore > computerScore) {
+    console.log('You win the game!');
+  } else {
+    console.log("Don't worry. Try better next time.");
+  }
+}
+
+playGame();
